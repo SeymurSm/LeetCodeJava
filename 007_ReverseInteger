@@ -1,0 +1,29 @@
+class Solution {
+    public int reverse(int x) {
+        boolean flag = false;
+        if(x<0)
+            flag = true;
+        long res = 0;
+        if(!flag)
+            for(; x>0 ; ){
+                    res = res*1 + x%10;
+                    if(x>=10)
+                        res = res * 10;
+                    x = x / 10;
+            }
+        else{
+            x = x * (-1);
+            for(; x>0 ; ){
+                    res = res*1 + x%10;
+                    if(x>=10)
+                        res = res * 10;
+                    x = x / 10;
+            }
+            
+            res = res * (-1);
+        }
+        if(res > Integer.MAX_VALUE || res < Integer.MIN_VALUE)
+            res = 0;
+        return (int)res;
+    }
+}

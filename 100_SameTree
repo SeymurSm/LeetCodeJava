@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isSame = true;
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+       return inOrder(p, q);
+       
+    }
+    
+    
+    public boolean inOrder(TreeNode rootP, TreeNode rootQ) {
+		if(rootP !=  null && rootQ != null) {
+            if(rootP.val != rootQ.val)
+                isSame = false;
+			inOrder(rootP.left, rootQ.left);
+			//Visit the node by Printing the node data  
+		//	System.out.printf("%d ",root.data);
+			inOrder(rootP.right, rootQ.right);
+		}
+        else if(rootP!=null && rootQ == null)
+            isSame = false;
+         else if(rootP==null && rootQ != null)
+            isSame = false;
+        
+        return isSame;
+	}
+}

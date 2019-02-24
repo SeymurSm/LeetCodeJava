@@ -1,0 +1,85 @@
+public class Solution {
+    public boolean isValid(String s) {
+        BracketChecker theChecker = new BracketChecker(s);
+        return theChecker.check(); // check brackets
+    }
+    
+    
+    public class Stack{
+        int size;
+        char[] arr;
+        int top ;
+        
+        public Stack(int size){
+            size = size;
+            arr = new char[size];
+            top = -1;
+        }
+        
+        public void push(char c){
+            arr[++top] = c;
+        }
+        public char pop(){
+            return arr[top--] ;
+        }
+        public char peek(char c){
+            return arr[top] ;
+        }
+        
+        public boolean isEmpty(){
+            return (top == -1);
+        }
+    }
+    
+    
+    public  class BracketChecker{
+        String input;
+        public BracketChecker(String input){
+            this.input = input;
+        }
+        
+        public  boolean  check(){
+            int stackSize = input.length();
+            
+            Stack st = new Stack(stackSize);
+            
+            for(int i = 0; i<input.length() ; i++){
+                char ch = input.charAt(i);
+                
+                switch(ch){
+                    case '{':
+                    case '[':
+                    case '(':
+                        st.push(ch);
+                        break;
+                    case '}': // closing symbols
+                    case ']':
+                    case ')': 
+                            if(!st.isEmpty()){
+                                char chStack = st.pop();
+
+                                if( (ch=='}' && chStack!='{') ||
+                                    (ch==']' && chStack!='[') ||
+                                    (ch==')' && chStack!='(') )
+                                        return false;
+                               }
+                            else 
+                                return false;
+                         break;
+                
+                    default :
+                        break;
+                    }
+                    
+                  
+                
+                }
+            
+                 if(!st.isEmpty()){ 
+                            return false;
+                       }
+                return true;
+            }
+        }
+    
+}

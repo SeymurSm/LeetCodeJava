@@ -1,0 +1,38 @@
+public class Solution {
+    public int[] plusOne(int[] digits) {
+        int length = digits.length;
+        long  number = digits[0];
+        boolean is999 = true;
+        
+        
+        for(int i = 0;i<digits.length;i++){
+
+            if( digits[i] != 9)
+                is999 = false;
+        }
+        
+            if(digits[digits.length-1] == 9 && !is999){
+                int i = digits.length-1;
+                do{
+                    digits[i] = 0;
+                    i--;
+                }
+                while(digits[i]==9);
+                
+                digits[i] = digits[i] + 1;
+                
+            }
+            else if(digits[digits.length-1] != 9 && !is999)
+            {
+                digits[digits.length-1] = digits[digits.length-1] + 1;
+            }
+               
+            
+        if(is999){
+            digits = new int[length+1];
+            digits[0] = 1;
+        }
+            
+        return digits;
+    }
+}

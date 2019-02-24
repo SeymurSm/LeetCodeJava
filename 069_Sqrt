@@ -1,0 +1,14 @@
+class Solution {
+    public int mySqrt(int x) {
+        int i = 0;
+ 
+        while(i*i<=x){
+            if(i==46340)
+                return i;
+            i +=1;
+        }
+        
+        
+        return i-1;
+    }
+}
