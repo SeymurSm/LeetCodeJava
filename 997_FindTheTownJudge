@@ -1,0 +1,31 @@
+class Solution {
+    public int findJudge(int N, int[][] trust) {
+        if(trust.length == 0)
+            return 1;
+        if(trust.length == 1)
+            return trust[0][1];
+        Set<Integer> l = new HashSet<Integer>();
+        
+        
+        for(int i = 1; i<N+1; i++){
+            
+            for(int j = 0; j<trust.length; j++){
+                if(trust[j][0] == i){
+                    l.clear();
+                    break;
+                }
+                if(trust[j][1] == i){
+                    l.add(trust[j][0]);
+                }
+                
+               
+         
+            }
+             if(l.size()==N-1)
+                    return i;
+            
+        }
+      
+      return -1;
+    }
+}
